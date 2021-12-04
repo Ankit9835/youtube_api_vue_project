@@ -1,9 +1,11 @@
 <template>
     <li class="list-group-item media">
-         <img :src="thumbnailUrl" @click="onVideoSelect">
+        <div @click="onVideoSelect">
+         <img :src="thumbnailUrl">
          <div class = "media-body">
             {{ video.snippet.title }}
-         </div> 
+         </div>
+        </div> 
     </li>
 </template>
 
@@ -17,7 +19,7 @@
         },
         methods:{
             onVideoSelect(){
-
+                this.$emit('videoSelect', this.video);
             }
         },
         props: ['video']
@@ -25,6 +27,9 @@
 </script>
 
 <style scoped>
+div{
+   display: flex; 
+}
     li{
         display: flex;
         cursor: pointer;
